@@ -23,21 +23,21 @@ nav {
     gap: 25px;
 }
 
-nav a {
+nav a, footer a {
     text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover, footer a:hover {
     text-decoration: underline;
 }
 
-a {
+nav a, footer a {
     color: #cdcdcd;
     transition-duration: 500ms;
     cursor: pointer;
 }
 
-a:hover {
+nav a:hover, footer a:hover {
     color: #808080;
 }
 
@@ -130,4 +130,23 @@ footer {
 
 .nav-btn-left {
     transform: translateX(0);
+}
+
+.section-header {
+    margin-bottom: 1.5em;
+}
+
+.content a {
+    color: steelblue;
+    transition-duration: 250ms;
+    width: min-content;
+    margin: 0;
+}
+
+.content a:visited {
+    color: steelblue;
+}
+
+.content a:hover {
+    color: cadetblue;
 }

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var nav_pos = nav.getBoundingClientRect();
         var header_pos = header.getBoundingClientRect();
 
-        if (nav_pos.bottom < header_pos.bottom) {
+        if ((nav_pos.top + nav_pos.bottom) / 2 < header_pos.bottom) {
             nav_button.classList.add("nav-btn-left");
         } else {
             nav_button.classList.remove("nav-btn-left");
