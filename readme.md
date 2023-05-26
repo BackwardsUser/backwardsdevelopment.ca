@@ -12,5 +12,4 @@ However don't be afraid to open a pull request. I will still look over pull requ
 
 **TL;DR**: Feel free to open a pull request or issue. Although It will be more strict than my other repos.
 
-## Todo
-I will be working on adding the other pages featured in the navbar here. However [my shop](https://shop.backwardsdevelopment.ca) will **NOT** make its way to my GitHub and will stay private.
+## [Todo](./todo.md)

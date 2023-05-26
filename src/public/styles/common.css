@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    -webkit-user-drag: none;
+}
+
+header {
+    padding: 15px 25px;
+    background-color: #202020;
+    color: #cdcdcd;
+    height: 100%;
+}
+
+nav {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #252525;
+    padding: 25px 25px;
+    gap: 25px;
+}
+
+nav a, footer a {
+    text-decoration: none;
+}
+
+nav a:hover, footer a:hover {
+    text-shadow: 2px 2px 1px #6d6d6d;
+    color: #adadad;
+}
+
+nav a:active, footer a:active {
+    text-decoration: underline;
+}
+
+nav a, footer a {
+    color: #cdcdcd;
+    transition-duration: 250ms;
+    cursor: pointer;
+}
+
+body {
+    height: 100%;
+    background-color: #202020;
+    overflow-x: hidden;
+}
+
+main {
+    /* background-color: #404040; */
+    background-image: url("../assets/images/yasser-m-banff-ab-a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    padding: 15px 25px;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px 1px #202020;
+}
+
+.content {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    background-color: #808080;
+    border-radius: 10px;
+    padding: 1em;
+    padding-top: 0.5em;
+    box-shadow: 2px 2px 1px #202020;
+    box-shadow: 2px 2px -1px #cdcdcd;
+}
+
+.content * {
+    margin: 10px;
+}
+
+.selected {
+    text-decoration: underline;
+    cursor: default;
+}
+
+.selected:hover {
+    text-shadow: none;
+    color: #cdcdcd;
+}
+
+.yasser {
+    color: steelblue;
+}
+
+.yasser:hover {
+    color: cadetblue;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+footer {
+    position: static;
+    bottom: 0;
+    background-color: #202020;
+    padding: 15px 25px;
+    color: #cdcdcd;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.credit {
+    padding-bottom: 1em;
+}
+
+.centered {
+    margin: auto 0;
+}
+
+.links {
+    margin: auto;
+}
+
+.links td {
+    padding: 0 10px;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.nav-button {
+    margin-left: -3vw;
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: #202020;
+    border: none;
+    color: white;
+    font-size: 2em;
+    transition-timing-function: ease-out;
+    transition-duration: 250ms;
+    border: 1px solid #202020;
+    cursor: pointer;
+    transform: translateX(150%);
+}
+
+.nav-button:hover {
+    background-color: #252525;
+    border: 1px solid #353535;
+}
+
+.nav-button:active {
+    background-color: #404040;
+}
+
+.nav-btn-left {
+    transform: translateX(0);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.icon {
+    margin: auto;
+    padding: 1em 0;
+    width: 2em;
+    aspect-ratio: 1/1;
+}
+
+.github {
+    color: #24292f;
+}
+
+.discord {
+    color: #5865F2;
+}
+.instagram {
+    text-shadow: none;
+    position: relative;
+}
+
+.instagram::after {
+    content: "Instagram";
+    background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    background-size: 200%;
+    background-position: 75% 25%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    transition-duration: 250ms;
+}
+
+.instagram::before {
+    content: "Instagram";
+    color: transparent;
+    transition-duration: 250ms;
+    position: absolute;
+}
+
+.instagram:hover::before {
+    text-shadow: none;
+    text-shadow: 2px 2px 1px #353535;
+}
+
+.paypal * {
+    margin: 0;
+}
+
+.paypal-icon {
+    border-radius: 50%;
+}
+
+.paypal-left {
+    color: #253B80;
+}
+
+.paypal-right {
+    color: #179BD7;
+}
+
+.reddit-icon {
+    width: 4em;
+    aspect-ratio: 1/1;
+    padding: .0005em 0;
+}
+
+.reddit {
+    color: #FF4500;
+}
+
+.youtube-icon {
+    aspect-ratio: 8/6;
+    padding: 1.2em 0;
+}
+
+.youtube {
+    color: #FFFFFF;
+}
+
+.twitch {
+    color: #9146FF;
+}
+
+.brand {
+    text-shadow: none;
+    text-decoration: none;
+}
+
+.stacked {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userLinks {
+    margin-left: 1em !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    text-align: center;
+}
