@@ -61,7 +61,7 @@ main {
     padding: 15px 25px;
     height: 100%;
     color: white;
-    text-shadow: 2px 2px 1px #202020;
+    text-shadow: 1px 1px 1px #202020;
 }
 
 .content {
@@ -213,7 +213,7 @@ footer {
     position: absolute;
 }
 
-.instagram:hover::before {
+.instagram-hover::before {
     text-shadow: none;
     text-shadow: 2px 2px 1px #353535;
 }
@@ -273,4 +273,25 @@ footer {
     flex-wrap: wrap;
     gap: 1em;
     text-align: center;
+}
+
+.section-header {
+    margin-bottom: 1.5em;
+}
+
+.content a {
+    color: steelblue;
+    transition-duration: 250ms;
+    width: min-content;
+    margin: 0;
+}
+
+.content a:visited {
+    color: steelblue;
+}
+
+.content a:hover {
+    color: cadetblue;
+    text-shadow: none;
+    text-shadow: 2px 2px 1px #353535;
 }

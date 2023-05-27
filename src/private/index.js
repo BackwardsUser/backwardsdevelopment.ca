@@ -14,6 +14,14 @@ app.get("/", (req, res) => {
     res.sendFile(`${viewsDir}/index.html`);
 });
 
+app.get("/about", (req, res) => {
+    res.redirect("/");
+});
+
+app.get("/media", (req, res) => {
+    res.sendFile(`${viewsDir}/media.html`)
+})
+
 app.listen(port, () => {
     console.log(`App Listening to Port ${port}.`);
 })
