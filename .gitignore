@@ -136,3 +136,4 @@ dist
 
 # Weird stuff
 uploads
+**/mediashare/*
