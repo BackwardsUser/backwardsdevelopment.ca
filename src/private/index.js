@@ -53,12 +53,20 @@ app.get("/getMedia", (req, res) => {
 var uploadedFiles_dir = join(__dirname, "..", "..", "uploads")
 var media_dir = join(__dirname, "..", "public", "assets", "videos", "mediashare")
 
+function getUserHasFile(username) {
+    var files_indexed = readdirSync(media_dir).filter(user => user === username)
+    if (files_indexed > 0) return true
+    else return false;
+}
+
 app.post("/upload", upload.array("files"), (req, res) => {
+    console.log(req.body.user);
+    if (req.body.user == "") return console.log("Cannot post anonymously")
     res.json({ message: "Successfully Uploaded Files." })
-    if (readdirSync(media_dir).filter(user => user === req.body.user) === -1) mkdirSync(`${media_dir}/${req.body.user}`);
-    req.files.forEach(file => {
-        renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
-    })
+    // if (!getUserHasFile(req.body.user)) mkdirSync(`${media_dir}/${req.body.user}`);
+    // req.files.forEach(file => {
+    //     renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
+    // })
 })
 
 app.listen(port, () => {

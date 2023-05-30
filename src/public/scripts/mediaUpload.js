@@ -1,4 +1,6 @@
-document.getElementById("fileUpload").addEventListener("submit", submitForm)
+var fileUpload = document.getElementById("fileUpload");
+console.log(fileUpload)
+fileUpload.addEventListener("submit", submitForm)
 /**
  * 
  * @param {Event} e 
@@ -7,6 +9,7 @@ function submitForm(e) {
     e.preventDefault();
     const user = document.getElementById("usernameb");
     const files = document.getElementById("video")
+    console.log("Hello")
     const formData = new FormData();
     formData.append("user", user.value);
     for (var i = 0; i < files.files.length; i++) {
