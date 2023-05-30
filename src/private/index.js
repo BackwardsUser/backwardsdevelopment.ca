@@ -1,6 +1,6 @@
 var express = require("express");
 var { join } = require("node:path");
-var { readdirSync, renameSync } = require("node:fs");
+var { readdirSync, renameSync, mkdirSync } = require("node:fs");
 var favicon = require("serve-favicon");
 
 var multer = require("multer");
@@ -55,6 +55,7 @@ var media_dir = join(__dirname, "..", "public", "assets", "videos", "mediashare"
 
 app.post("/upload", upload.array("files"), (req, res) => {
     res.json({ message: "Successfully Uploaded Files." })
+    if (readdirSync(media_dir).filter(user => user === req.body.user) === -1) mkdirSync(`${media_dir}/${req.body.user}`);
     req.files.forEach(file => {
         renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
     })
