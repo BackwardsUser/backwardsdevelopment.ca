@@ -19,15 +19,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!skip) {
             nav.style.position = "initial";
         }
+
         skip = false;
 
         var nav_pos = nav.getBoundingClientRect();
         var header_pos = header.getBoundingClientRect();
 
         if ((nav_pos.top + nav_pos.bottom) / 2 < header_pos.bottom) {
-            nav_button.classList.add("nav-btn-left");
+            nav_button.classList.add("left");
+            nav_button.tabIndex = "0"
+            nav.childNodes.forEach((child, key) => {
+                if (child.nodeType !== 1) return;
+                child.tabIndex = -1
+            })
         } else {
-            nav_button.classList.remove("nav-btn-left");
+            nav_button.classList.remove("left");
+            nav_button.tabIndex = "-1"
+            nav.childNodes.forEach((child, key) => {
+                if (child.nodeType !== 1) return;
+                child.tabIndex = (key + 1);
+            })
+            
         }
     })
 
@@ -42,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
         skip = true;
         nav.style.position = (nav.style.position == "initial") ? "sticky" : "initial";
         nav.style.top = `${header_pos.bottom}px`;
+        nav.childNodes.forEach((child, key) => {
+            if (child.nodeType !== 1) return;
+            child.tabIndex = (key + 1)
+        })
     })
 
 })

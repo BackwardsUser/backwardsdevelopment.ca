@@ -1,0 +1,75 @@
+.right {
+    display: flex;
+    flex-direction: row;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.username {
+    margin: auto 0;
+}
+
+.pfp {
+    width: 25px;
+    border-radius: 25px;
+    aspect-ratio: 1/1;
+}
+
+.pageHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.section-header {
+    margin: auto 0;
+}
+
+.media {
+    max-width: 100%;
+}
+
+
+.nospacing {
+    margin: 0;
+    padding: 0;
+}
+
+.userdiv {
+    padding: 5px;
+    background-color: #333;
+}
+
+.videosContainer {
+    margin: 5px 2px;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.mediaVid {
+    width: 400px;
+    background-color: #000;
+    aspect-ratio: 2/1;
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.postMedia {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitMedia {
+    width: 5%;
+    aspect-ratio: 2/1;
+}
