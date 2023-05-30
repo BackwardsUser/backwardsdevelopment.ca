@@ -16,9 +16,9 @@
     <script src=""></script>
     <script src="../scripts/navHandler.js"></script>
     <script src="../scripts/discordVerifyLogin.js"></script>
+    <script src="../scripts/discordLogin.js" defer></script>
     <script src="../scripts/mediaUpload.js" defer></script>
     <script src="../scripts/instagramHoverHandler.js" defer></script>
-    <script src="../scripts/discordLogin.js" defer></script>
     <script src="../scripts/mediaPageControls.js" defer></script>
     <script src="../scripts/horizontalScrolling.js" defer></script>
     <title>Backwards Development | Media</title>
@@ -62,7 +62,7 @@
                     <h3 class="username" id="usernamea"></h3>
                 </a>
             </div>
-            <form id="fileUpload" class="postMedia">
+            <form id="fileUpload" action="/upload" enctype='multipart/form-data' class="postMedia">
                 <p>Please enter the video you'd like to upload</p>
                 <input type="text" hidden id="usernameb">
                 <input type="file" name="video" id="video" class="video" multiple>

@@ -133,3 +133,6 @@ dist
 # Old/Compromising Data
 
 **/*.old
+
+# Weird stuff
+uploads

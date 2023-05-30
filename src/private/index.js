@@ -1,7 +1,10 @@
 var express = require("express");
 var { join } = require("node:path");
-var { readdirSync } = require("node:fs");
-var favicon = require("serve-favicon")
+var { readdirSync, renameSync } = require("node:fs");
+var favicon = require("serve-favicon");
+
+var multer = require("multer");
+var upload = multer({ dest: "uploads/" });
 
 var app = express();
 
@@ -9,6 +12,8 @@ var port = (process.env.NODE_ENV === "production") ? "80" : "3000";
 
 var viewsDir = join(__dirname, "..", "public", "view");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "..", "public")));
 
 app.get("/", (req, res) => {
@@ -45,8 +50,14 @@ app.get("/getMedia", (req, res) => {
     res.send(mediaFiles)
 })
 
-app.post("/upload", (req, res) => {
-    console.log(req.body)
+var uploadedFiles_dir = join(__dirname, "..", "..", "uploads")
+var media_dir = join(__dirname, "..", "public", "assets", "videos", "mediashare")
+
+app.post("/upload", upload.array("files"), (req, res) => {
+    res.json({ message: "Successfully Uploaded Files." })
+    req.files.forEach(file => {
+        renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
+    })
 })
 
 app.listen(port, () => {
