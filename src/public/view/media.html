@@ -13,13 +13,13 @@
     <meta name="og:description" content="Scripts, Designs, Discord Bots and Mods">
     <meta name="og:url" content="https://www.backwardsdevelopment.ca/">
     <meta name="og:image" content="/assets/icons/local/favicon.ico">
+    <script src="../scripts/horizontalScrolling.js"></script>
     <script src="../scripts/navHandler.js"></script>
-    <script src="../scripts/discordVerifyLogin.js"></script>
+    <script src="../scripts/mediaWindowLoader.js"></script>
     <script src="../scripts/discordLogin.js" defer></script>
     <script src="../scripts/mediaUpload.js" defer></script>
     <script src="../scripts/instagramHoverHandler.js" defer></script>
     <script src="../scripts/mediaPageControls.js" defer></script>
-    <script src="../scripts/horizontalScrolling.js" defer></script>
     <title>Backwards Development | Media</title>
 </head>
 
@@ -63,7 +63,7 @@
             </div>
             <form id="fileUpload" action="/upload" enctype='multipart/form-data' class="postMedia">
                 <p>Please enter the video you'd like to upload</p>
-                <input type="text" hidden id="usernameb">
+                <input type="text" hidden id="userIdentifier">
                 <input type="file" name="video" id="video" class="video" multiple>
                 <button type="submit" class="submitMedia">Submit</button>
             </form>
