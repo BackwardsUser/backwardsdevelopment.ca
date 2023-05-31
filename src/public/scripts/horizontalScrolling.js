@@ -4,21 +4,15 @@ function createHorizontalScrollListener() {
     for (scroller of scrollContainers) {
         
         scroller.addEventListener("mouseenter", () => {
-            document.addEventListener("mousewheel", preventScrolling, { passive: false });
-            document.addEventListener("DOMMouseScroll", preventScrolling, { passive: false });
+            document.body.style.overflow = "hidden";
         });
         
         scroller.addEventListener("mouseleave", () => {
-            document.removeEventListener("mousewheel", preventScrolling);
-            document.removeEventListener("DOMMouseScroll", preventScrolling);
+            document.body.style.overflow = "auto";
         });
         
         scroller.addEventListener("wheel", (evt) => {
-            scroller.scrollLeft += evt.deltaY;
+            evt.currentTarget.scrollLeft += evt.deltaY;
         });
     }
-}
-
-function preventScrolling(event) {
-    event.preventDefault();
 }
