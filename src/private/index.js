@@ -1,7 +1,6 @@
 var express = require("express");
 var { join } = require("node:path");
 var { readdirSync, renameSync, mkdirSync, rmSync } = require("node:fs");
-var favicon = require("serve-favicon");
 
 var { exec } = require('node:child_process')
 
