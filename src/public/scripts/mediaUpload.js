@@ -1,5 +1,4 @@
 var fileUpload = document.getElementById("fileUpload");
-console.log(fileUpload)
 fileUpload.addEventListener("submit", submitForm)
 /**
  * 
