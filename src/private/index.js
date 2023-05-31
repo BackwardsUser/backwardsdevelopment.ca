@@ -3,6 +3,8 @@ var { join } = require("node:path");
 var { readdirSync, renameSync, mkdirSync } = require("node:fs");
 var favicon = require("serve-favicon");
 
+require("dotenv").config();
+
 var multer = require("multer");
 var upload = multer({ dest: "uploads/" });
 
@@ -33,22 +35,38 @@ app.get("/auth/discord", (req, res) => {
 })
 
 app.get("/getMedia", (req, res) => {
-    
-    var userFiles = readdirSync(join(__dirname, "..", "public", "assets", "videos", "mediashare"));
+    var userDirectories = readdirSync(join(__dirname, "..", "public", "assets", "videos", "mediashare"));
     var mediaFiles = [];
 
-    userFiles.forEach(user => {
-        var userFiles = readdirSync(join(__dirname, "..", "public", "assets", "videos", "mediashare", user))
-        var userContent = {
-            submitter: user,
-            videos: userFiles
-        }
-        mediaFiles.push(userContent);
-    })
-    
+    var fetchPromises = userDirectories.map(identifier => {
+        var userFiles = readdirSync(join(__dirname, "..", "public", "assets", "videos", "mediashare", identifier));
 
-    res.send(mediaFiles)
-})
+        return fetch(`https://discord.com/api/v9/users/${identifier}`, {
+            headers: {
+                Authorization: `Bot ${process.env.TOKEN}`
+            }
+        })
+            .then(result => result.json())
+            .then(res => {
+                var userContent = {
+                    identifier: identifier,
+                    user: `${res.username}#${res.discriminator}`,
+                    videos: userFiles
+                };
+                mediaFiles.push(userContent);
+            });
+    });
+
+    Promise.all(fetchPromises)
+        .then(() => {
+            res.send(mediaFiles);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the fetch requests
+            console.error(error);
+            res.status(500).send("An error occurred");
+        });
+});
 
 var uploadedFiles_dir = join(__dirname, "..", "..", "uploads")
 var media_dir = join(__dirname, "..", "public", "assets", "videos", "mediashare")
@@ -63,10 +81,10 @@ app.post("/upload", upload.array("files"), (req, res) => {
     console.log(req.body.user);
     if (req.body.user == "") return console.log("Cannot post anonymously")
     res.json({ message: "Successfully Uploaded Files." })
-    // if (!getUserHasFile(req.body.user)) mkdirSync(`${media_dir}/${req.body.user}`);
-    // req.files.forEach(file => {
-    //     renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
-    // })
+    if (!getUserHasFile(req.body.user)) mkdirSync(`${media_dir}/${req.body.user}`);
+    req.files.forEach(file => {
+        renameSync(`${uploadedFiles_dir}/${file.filename}`, `${media_dir}/${req.body.user}/${file.originalname}`)
+    })
 })
 
 app.listen(port, () => {
