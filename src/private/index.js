@@ -54,6 +54,10 @@ app.get("/auth/discord", (req, res) => {
     res.sendFile(`${viewsDir}/media.html`)
 })
 
+app.get("/downloads", (req, res) => {
+    res.sendFile(`${viewsDir}/downloads.html`)
+})
+
 /* API Stuff */
 app.get("/getMedia", (req, res) => {
     var userDirectories = readdirSync(join(__dirname, "..", "public", "assets", "videos", "mediashare"));
