@@ -102,7 +102,7 @@ app.post("/upload", upload.array("files"), (req, res) => {
             console.log("File converted.")
             rmSync(`${media_dir}/${req.body.user}/${file.originalname}`);
             console.log("Removed Original File.")
-            res.json({ message: "Upload Successful"});
+            res.send({ message: "Upload Successful"});
         });
     })
 })
