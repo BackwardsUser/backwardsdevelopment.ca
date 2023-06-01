@@ -64,6 +64,11 @@ main {
     text-shadow: 1px 1px 1px #202020;
 }
 
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+
 .content {
     width: 75%;
     height: 75%;

@@ -1,0 +1,15 @@
+.spaced {
+    margin: 10px;
+    margin-left: 0;
+}
+
+.item {
+    background-color: #353535;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px #202020;
+}
+
+.nospace {
+    margin: 0;
+}
