@@ -20,7 +20,7 @@ require("dotenv").config();
 var express = require("express");
 var { join } = require("node:path");
 var { readdirSync, renameSync, mkdirSync, rmSync } = require("node:fs");
-var { exec } = require('node:child_process')
+var { exec } = require('node:child_process');
 var multer = require("multer");
 
 /* Package Initialization */
@@ -28,9 +28,9 @@ var upload = multer({ dest: "uploads/" });
 var app = express();
 
 /* Variables */
-var port = "2000"
+var port = "3000";
 var viewsDir = join(__dirname, "..", "public", "view");
-var uploadSize = '200mb';
+var uploadSize = '4gb';
 
 /* Express Initialization */
 app.use(express.json({ limit: uploadSize }));
@@ -48,15 +48,15 @@ app.get("/about", (req, res) => {
 
 app.get("/media", (req, res) => {
     res.sendFile(`${viewsDir}/mediaLogin.html`)
-})
+});
 
 app.get("/auth/discord", (req, res) => {
     res.sendFile(`${viewsDir}/media.html`)
-})
+});
 
 app.get("/downloads", (req, res) => {
     res.sendFile(`${viewsDir}/downloads.html`)
-})
+});
 
 /* API Stuff */
 app.get("/getMedia", (req, res) => {
@@ -104,7 +104,8 @@ function getUserHasFile(username) {
 
 app.post("/upload", upload.array("files"), (req, res) => {
     console.log("Upload Request Submitted");
-    if (req.body.user == "") return console.log("Cannot post anonymously");
+    console.log(`Submitted by ${res.body.user}`)
+    if (req.body.user == "", req.body.user == undefined) return console.log("Cannot post anonymously");
     if (!getUserHasFile(req.body.user)) mkdirSync(`${media_dir}/${req.body.user}`);
     console.log("User has directory");
     req.files.forEach(file => {
@@ -113,7 +114,7 @@ app.post("/upload", upload.array("files"), (req, res) => {
         const newFile = file.originalname.split(".");
         const fileName = newFile.shift();
         console.log("Checking if submitted file is MP4");
-        if (newFile[0] === "mp4") return res.json({ message: "Upload Successful"});
+        if (newFile[0] === "mp4") return res.json({ message: "Upload Successful" });
         console.log("File not MP4, converting to MP4");
         const command = `ffmpeg -i "${media_dir}/${req.body.user}/${file.originalname}" "${media_dir}/${req.body.user}/${fileName}.mp4"`
         exec(command, { stdio: 'ignore' }, (error, stdout, stderr) => {
@@ -124,7 +125,7 @@ app.post("/upload", upload.array("files"), (req, res) => {
             console.log("File converted.")
             rmSync(`${media_dir}/${req.body.user}/${file.originalname}`);
             console.log("Removed Original File.")
-            res.send({ message: "Upload Successful"});
+            res.send({ message: "Upload Successful" });
         });
     })
 })

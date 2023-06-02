@@ -17,10 +17,18 @@ function submitForm(e) {
     for (var i = 0; i < files.files.length; i++) {
         formData.append("files", files.files[i])
     }
-    fetch("/upload", {
+
+    var options = {
+        headers: {
+            'Content-Type': 'application/json'
+        },
         method: "POST",
         body: formData
-    })
+    }
+
+    console.log(options)
+
+    fetch("http://upload.backwardsdevelopment.ca/upload", options)
     .then(res => {
         if (files.files.length > 1) {
             uploadStatus.textContent = `Video Successfully Uploaded`;

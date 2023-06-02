@@ -10,13 +10,14 @@
 }
 
 .username {
-    margin: auto 0;
+    margin: auto;
 }
 
 .pfp {
     width: 25px;
-    border-radius: 25px;
-    aspect-ratio: 1/1;
+    height: 25px;
+    border-radius: 50%;
+    margin: auto;
 }
 
 .pageHeader {
@@ -72,4 +73,18 @@
 .submitMedia {
     width: 5%;
     aspect-ratio: 2/1;
+}
+
+.uploadVideo {
+    padding: 8px;
+    background-color: cadetblue;
+    border: solid 2px teal;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 250ms;
+}
+
+.uploadVieo:hover {
+    background-color: cornflowerblue;
 }

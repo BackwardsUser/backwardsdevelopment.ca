@@ -45,10 +45,13 @@
         <div class="content media" id="mediaContainer">
             <div class="pageHeader">
                 <h2 class="section-header">Media Sharing</h2>
-                <a class="userinfo" id="uploadvideo" title="Upload Video" onclick="usernameClicked()">
-                    <img src="" class="pfp" alt="dpfp" id="pfp">
-                    <h3 class="username" id="username"></h3>
-                </a>
+                <div class="userinfo">
+                    <button id="uploadVideo" class="uploadVideo" onclick="usernameClicked()">Upload</button>
+                    <div class="inline">
+                        <img src="" class="pfp" alt="p" id="pfp">
+                        <h3 class="username" id="username"></h3>
+                    </div>
+                </div>
             </div>
             <div class="media" id="media">
             </div>
